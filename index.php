@@ -1,4 +1,8 @@
 <?php
+header('Context-Type:text/html;charset=utf-8');
+header("Access-Control-Allow-Origin: http://127.0.0.1:5173");
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: *');
 
 require "./hooks/tools.php";
 
@@ -40,8 +44,10 @@ function myAutoload($name=''){
 //获取控制器名，指定默认的控制器名
 $controller_name=CONTROLLER . "Controller";//构造控制器的类名
 
-$ctrl=new $controller_name();//可变类
-
-$action=ACTION . "Action";//构造控制器类中的方法名
-$ctrl->$action();
-
+if($controller_name == 'UsersController') {
+  new $controller_name(ACTION);
+} else {
+  $ctrl=new $controller_name();//可变类
+  $action=ACTION . "Action";//构造控制器类中的方法名
+  $ctrl->$action();
+}
