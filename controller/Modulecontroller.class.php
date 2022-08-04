@@ -21,7 +21,7 @@ class ModuleController extends Controller{
     if($token_api == $token_server) {
       // dosomething...
     } else {
-      echo "Error:login error! Access is denied.";
+      echo "Error:token error! Access is denied.";
       die;
     }
 

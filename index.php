@@ -46,7 +46,10 @@ $controller_name=CONTROLLER . "Controller";//构造控制器的类名
 
 if($controller_name == 'UsersController') {
   new $controller_name(ACTION);
-} else {
+} else if($controller_name == 'RoleController') {
+  new $controller_name(ACTION);
+}
+ else {
   $ctrl=new $controller_name();//可变类
   $action=ACTION . "Action";//构造控制器类中的方法名
   $ctrl->$action();

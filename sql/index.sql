@@ -23,9 +23,13 @@ create table `userinfo` (
   `cellphone` bigint(11) not null,
   `createAt` varchar(30) not null,
   `updataAt` varchar(30) not null,
+  `role` int unsigned comment 'roleId',
+  `department` int unsigned comment 'departmentId',
   primary key (`id`)
 ) engine=innodb default charset=utf8;
 
+ALTER TABLE `userinfo` ADD `role` int unsigned comment 'roleId';
+ALTER TABLE `userinfo` ADD `department` int unsigned comment 'departmentId';
 insert into `userinfo` values(2,'coderwhy', "coderwhy", "18812345678", "2021-02-01", "2022-02-03" );
 
 create table role (
@@ -50,3 +54,22 @@ create table department (
 ) engine=innodb default charset=utf8;
 
 insert into department values(2, '总裁办', null, '2021-02-02', '2021-02-04', 'kobe');
+
+
+-- 菜单
+-- 字段： id, name, type(菜单级别), url, icon, sort, children, parentId
+create table `menu` (
+  `id` int unsigned not null auto_increment,
+  `name` char(10) not null,
+  `type` tinyint unsigned not null,
+  `url` varchar(50) not null,
+  `icon` char(20),
+  `sort` tinyint unsigned not null,
+  `children` varchar(50),
+  `parentId` tinyint unsigned,
+  `roleId` int unsigned comment 'roleId',
+  primary key (`id`)
+) engine=innodb default charset=utf8;
+
+ALTER TABLE `menu` ADD `roleId` int unsigned comment 'roleId';
+-- 023122

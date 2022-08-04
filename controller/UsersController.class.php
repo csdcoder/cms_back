@@ -5,12 +5,13 @@ class UsersController extends ModuleController{
   public function __construct($id) {
     parent::__construct();
     $basicInfo = $this -> basicInfoById($id);
-    $roleInfo = $this -> roleInfoById($id);
-    $departmentInfo = $this -> departmentInfoById($id);
+    $roleInfo = $this -> roleInfoById($basicInfo['role']);
+    $departmentInfo = $this -> departmentInfoById($basicInfo['department']);
 
-    $data = $basicInfo[0];
-    $data['role'] = $roleInfo;
-    $data['department'] = $departmentInfo;
+    $data['code'] = 0;
+    $data['data'] = $basicInfo;
+    $data['data']['role'] = $roleInfo;
+    $data['data']['department'] = $departmentInfo;
     echoj($data);
   }
 

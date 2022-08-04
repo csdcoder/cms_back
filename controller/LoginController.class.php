@@ -28,7 +28,7 @@ class LoginController extends Controller{
       echoj($info);
 
     }else{
-      echo "Error:token error! Access is not allowed";
+      echo "Error:login error! Access is not allowed";
     }
 
   }
