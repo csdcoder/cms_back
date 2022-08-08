@@ -22,15 +22,15 @@ create table `userinfo` (
   `realname` char(20) not null,
   `cellphone` bigint(11) not null,
   `createAt` varchar(30) not null,
-  `updataAt` varchar(30) not null,
-  `role` int unsigned comment 'roleId',
-  `department` int unsigned comment 'departmentId',
+  `updateAt` varchar(30) not null,
+  `roleId` int unsigned comment 'roleId',
+  `departmentI` int unsigned comment 'departmentId',
   primary key (`id`)
 ) engine=innodb default charset=utf8;
 
 ALTER TABLE `userinfo` ADD `role` int unsigned comment 'roleId';
 ALTER TABLE `userinfo` ADD `department` int unsigned comment 'departmentId';
-insert into `userinfo` values(2,'coderwhy', "coderwhy", "18812345678", "2021-02-01", "2022-02-03" );
+ALTER TABLE `userinfo` ADD `enable` tinyint(1) ;
 
 create table role (
   id int unsigned not null auto_increment,

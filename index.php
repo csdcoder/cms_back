@@ -45,7 +45,14 @@ function myAutoload($name=''){
 $controller_name=CONTROLLER . "Controller";//构造控制器的类名
 
 if($controller_name == 'UsersController') {
-  new $controller_name(ACTION);
+  $ctrl = new $controller_name();
+  if(is_int(ACTION)) {
+    $action = 'getInfoByIdAction';
+    $ctrl->$action();
+  } else {
+    $action=ACTION . "Action";//构造控制器类中的方法名
+    $ctrl->$action();    
+  }
 } else if($controller_name == 'RoleController') {
   new $controller_name(ACTION);
 }

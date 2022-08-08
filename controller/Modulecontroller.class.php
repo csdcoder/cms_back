@@ -18,7 +18,7 @@ class ModuleController extends Controller{
     $salt = "6166a34584548b14e";
     $token_server = 'Bearer ' . md5($token_name . $salt . date('Y-m-d', time())). '-' . $token_name;
 
-    if($token_api == $token_server) {
+    if($token_api === $token_server) {
       // dosomething...
     } else {
       echo "Error:token error! Access is denied.";
