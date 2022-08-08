@@ -7,16 +7,19 @@ class UsersController extends ModuleController{
 
   }
 
-  public function getInfoByIdAction($id) {
+  public function infoAction() {
+    $pathinfo = explode('/',$_SERVER['PATH_INFO']);
+    $id = $pathinfo[3];
+
     $basicInfo = $this -> basicInfoById($id);
-    $roleInfo = $this -> roleInfoById($basicInfo['role']);
-    $departmentInfo = $this -> departmentInfoById($basicInfo['department']);
+    $roleInfo = $this -> roleInfoById($basicInfo['roleId']);
+    $departmentInfo = $this -> departmentInfoById($basicInfo['departmentId']);
 
     $data['code'] = 0;
     $data['data'] = $basicInfo;
     $data['data']['role'] = $roleInfo;
     $data['data']['department'] = $departmentInfo;
-    echoj($data);    
+    echoj($data);   
   }
 
   public function basicInfoById($id) {
