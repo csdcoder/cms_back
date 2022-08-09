@@ -4,18 +4,16 @@ class RoleController extends ModuleController {
 
   private $_menus = null;
 
-  public function __construct($id) {
+  public function __construct() {
     parent::__construct();
-    
-    $pathinfo = explode('/',$_SERVER['PATH_INFO']);
-    if($pathinfo[3] == 'menus') {
-      $res = $this -> getMenus($id);
-    }
 
   }
 
   // 根据角色id获取菜单
-  public function getMenus($roleId) {
+  public function menusAction() {
+    $pathinfo = explode('/',$_SERVER['PATH_INFO']);
+    $roleId = $pathinfo[3];
+
     $m = Factory::M('MenuModel');
     $res = $m -> getInfo('roleId', $roleId, false);
     foreach ($res as $key => $value) {
@@ -23,6 +21,16 @@ class RoleController extends ModuleController {
     }
     echoj($res);
     return $res;
+  }
+
+  // 获取角色列表
+  public function listAction() {
+    $m = Factory::M('RoleModel');
+
+    $res = $m -> roleList();
+    $data['code'] = 0;
+    $data['data'] = $res;
+    echoj($data);
   }
 
   private function recMenu($menu) {

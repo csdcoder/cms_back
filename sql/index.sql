@@ -42,6 +42,8 @@ create table role (
 ) engine=innodb default charset=utf8;
 
 insert into role values(2, '超级管理员', '所有权限', '2021-02-02', '2021-02-04');
+insert into role values(3, '运营', '日常事务', '2021-02-06', '2021-03-04');
+insert into role values(4, '人事', '人事管理', '2021-02-22', '2021-03-04');
 
 create table department (
   id int unsigned not null auto_increment,
